@@ -1,5 +1,6 @@
 //Problem 4-1, Data Structures
 
+
 'use strict';
 //expects an arithmetic expression as a string
 function testParen (input) {
