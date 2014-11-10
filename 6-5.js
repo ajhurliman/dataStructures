@@ -1,0 +1,68 @@
+//Rewrite your solution to Example 6-4 using a doubly linked list.
+
+function Node(element) {
+  this.element = element;
+  this.next = null;
+  this.prev = null;
+}
+
+function LList() {
+  this.head = new Node("head");
+  this.find = find;
+  this.insert = insert;
+  this.display = display;
+  this.findPrevious = findPrevious;
+  this.remove = remove;
+}
+
+function remove(item) {
+  var prevNode = this.findPrevious(item);
+  if (!(prevNode.next == null)) {
+    prevNode.next = prevNode.next.next;
+  }
+}
+
+function findPrevious(item) {
+  var currNode = this.head;
+  while (!(currNode.next == null) &&
+             (currNode.next.element != item)) {
+        currNode = currNode.next;
+  }
+  return currNode;
+}
+
+function display() {
+var currNode = this.head;
+while (!(currNode.next == null)) {
+      print(currNode.next.element);
+      currNode = currNode.next;
+   }
+}
+
+function find(item) {
+  var currNode = this.head;
+  while (currNode.element != item) {
+    currNode = currNode.next;
+  }
+  return currNode.element;
+}
+
+function show(item) {
+  var target = find(item);
+  console.log(target);
+}
+
+function advance(item, n) {
+  var position =  find(item);
+  remove(item);
+  insert(item, (position + n));
+}
+
+function insert(newElement, item) {
+  var newNode = new Node(newElement);
+  var current = this.find(item);
+  newNode.next = current.next;
+  newNode.prev = current.prev;
+  current.next = newNode;
+  current.prev = newNode;
+}
